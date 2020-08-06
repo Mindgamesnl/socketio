@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/zyxar/socketio/engine"
+	"github.com/Mindgamesnl/socketio/engine"
 )
 
 var (
@@ -59,6 +59,10 @@ type socket struct {
 	decoder Decoder
 	acks    map[string]*ackHandle
 	mutex   sync.RWMutex
+}
+
+func (s *socket) GetQuery() url.Values {
+	return s.ß.Query
 }
 
 func newSocket(ß *engine.Socket, parser Parser) *socket {

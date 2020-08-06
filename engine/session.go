@@ -39,7 +39,7 @@ func (s *sessionManager) Remove(id string) {
 }
 
 func (s *sessionManager) NewSession(conn Conn, readTimeout, writeTimeout time.Duration, query url.Values) *Socket {
-	ß := newSession(conn, readTimeout, writeTimeout, query url.Values)
+	ß := newSession(conn, readTimeout, writeTimeout, query)
 	s.Lock()
 	s.ß[ß.id] = ß
 	s.Unlock()

@@ -5,7 +5,7 @@ import (
 	"io"
 	"reflect"
 
-	"github.com/zyxar/socketio/engine"
+	"github.com/Mindgamesnl/socketio/engine"
 )
 
 var (

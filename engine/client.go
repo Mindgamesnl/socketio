@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"net/url"
 	"sync"
 	"time"
 )
@@ -38,7 +39,7 @@ func Dial(rawurl string, requestHeader http.Header, dialer Dialer) (c *Client, e
 	pingTimeout := time.Duration(param.PingTimeout) * time.Millisecond
 
 	closeChan := make(chan struct{}, 1)
-	ß := newSocket(conn, pingInterval+pingTimeout, pingTimeout, param.SID)
+	ß := newSocket(conn, pingInterval+pingTimeout, pingTimeout, param.SID, url.Values{})
 	c = &Client{
 		Socket:        ß,
 		eventHandlers: newEventHandlers(),

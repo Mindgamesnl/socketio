@@ -4,3 +4,5 @@ github.com/philhofer/fwd v1.0.0 h1:UbZqGr5Y38ApvM/V/jEljVxwocdweyH+vmYvRPBnbqQ=
 github.com/philhofer/fwd v1.0.0/go.mod h1:gk3iGcWd9+svBvR0sR+KPcfE+RNWozjowpeBVG3ZVNU=
 github.com/tinylib/msgp v1.1.1 h1:TnCZ3FIuKeaIy+F45+Cnp+caqdXGy4z74HvwXN+570Y=
 github.com/tinylib/msgp v1.1.1/go.mod h1:+d+yLhGm8mzTaHzB+wgMYrodPfmZrzkirds8fDWklFE=
+github.com/zyxar/socketio v0.0.0-20200623153533-f514eff01dd3 h1:BKGvcyDzz+1Qff4l3bZtM3RpcOAiePNvyD77Gizd7FA=
+github.com/zyxar/socketio v0.0.0-20200623153533-f514eff01dd3/go.mod h1:lMCBF9JFpkAwXs2Fhpu2iiVJAv/c1BwWAkH+3atGtY8=

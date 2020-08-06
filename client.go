@@ -3,7 +3,7 @@ package socketio
 import (
 	"net/http"
 
-	"github.com/zyxar/socketio/engine"
+	"github.com/Mindgamesnl/socketio/engine"
 )
 
 // Client is socket.io client
