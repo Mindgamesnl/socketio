@@ -1,4 +1,4 @@
-module github.com/zyxar/socketio
+module github.com/mindgamesnl/socketio
 
 go 1.14
 
