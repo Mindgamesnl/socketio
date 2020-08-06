@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io"
 	"net"
+	"net/url"
 	"reflect"
 	"sync"
 
@@ -17,6 +18,7 @@ var (
 
 // Socket is abstraction of bidirectional socket.io connection
 type Socket interface {
+	GetQuery() url.Values
 	Emit(event string, args ...interface{}) (err error)
 	EmitError(arg interface{}) (err error)
 	Namespace() string
@@ -39,6 +41,11 @@ func (n *nspSock) Namespace() string { return n.name }
 // Emit implements Socket.Emit
 func (n *nspSock) Emit(event string, args ...interface{}) (err error) {
 	return n.socket.emit(n.name, event, args...)
+}
+
+// GetQuery implements Socket.GetQuery
+func (n *nspSock) GetQuery() url.Values {
+	return n.ß.Query
 }
 
 // EmitError implements Socket.EmitError
