@@ -142,7 +142,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		ß := s.NewSession(conn, s.pingTimeout+s.pingInterval, s.pingTimeout)
+		ß := s.NewSession(conn, s.pingTimeout+s.pingInterval, s.pingTimeout, query)
 		ß.transportName = transport.Name()
 		select {
 		case <-s.done:

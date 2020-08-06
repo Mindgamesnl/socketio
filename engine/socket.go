@@ -3,6 +3,7 @@ package engine
 import (
 	"encoding/json"
 	"net/http"
+	"net/url"
 	"sync"
 	"time"
 )
@@ -10,6 +11,7 @@ import (
 // Socket is engine.io connection encapsulation
 type Socket struct {
 	Conn
+	Query         url.Values
 	readTimeout   time.Duration
 	writeTimeout  time.Duration
 	transportName string
@@ -20,8 +22,9 @@ type Socket struct {
 	sync.RWMutex
 }
 
-func newSocket(conn Conn, readTimeout, writeTimeout time.Duration, id string) *Socket {
+func newSocket(conn Conn, readTimeout, writeTimeout time.Duration, id string, query url.Values) *Socket {
 	so := &Socket{
+		Query:        query,
 		Conn:         conn,
 		readTimeout:  readTimeout,
 		writeTimeout: writeTimeout,

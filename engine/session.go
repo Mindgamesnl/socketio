@@ -4,13 +4,14 @@ import (
 	"crypto/rand"
 	"encoding/base32"
 	"io"
+	"net/url"
 	"sync"
 	"time"
 )
 
-func newSession(conn Conn, readTimeout, writeTimeout time.Duration) *Socket {
+func newSession(conn Conn, readTimeout, writeTimeout time.Duration, query url.Values) *Socket {
 	id := generateSidBytes(16)
-	return newSocket(conn, readTimeout, writeTimeout, b32enc.EncodeToString(id))
+	return newSocket(conn, readTimeout, writeTimeout, b32enc.EncodeToString(id), query)
 }
 
 type sessionManager struct {
@@ -37,8 +38,8 @@ func (s *sessionManager) Remove(id string) {
 	s.Unlock()
 }
 
-func (s *sessionManager) NewSession(conn Conn, readTimeout, writeTimeout time.Duration) *Socket {
-	ß := newSession(conn, readTimeout, writeTimeout)
+func (s *sessionManager) NewSession(conn Conn, readTimeout, writeTimeout time.Duration, query url.Values) *Socket {
+	ß := newSession(conn, readTimeout, writeTimeout, query url.Values)
 	s.Lock()
 	s.ß[ß.id] = ß
 	s.Unlock()
