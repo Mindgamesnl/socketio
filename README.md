@@ -39,7 +39,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/zyxar/socketio"
+	"github.com/Mindgamesnl/socketio"
 )
 
 func main() {

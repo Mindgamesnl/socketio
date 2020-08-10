@@ -1,14 +1,14 @@
 # engine
 
-[![GoDoc](https://godoc.org/github.com/zyxar/socketio/engine?status.svg)](https://godoc.org/github.com/zyxar/socketio/engine)
-[![license](https://img.shields.io/badge/license-New%20BSD-ff69b4.svg)](https://github.com/zyxar/socketio/blob/master/LICENSE)
+[![GoDoc](https://godoc.org/github.com/Mindgamesnl/socketio/engine?status.svg)](https://godoc.org/github.com/Mindgamesnl/socketio/engine)
+[![license](https://img.shields.io/badge/license-New%20BSD-ff69b4.svg)](https://github.com/Mindgamesnl/socketio/blob/master/LICENSE)
 
 [engine.io](https://github.com/socketio/engine.io) in #Go
 
 ## Install
 
 ```shell
-vgo get -v github.com/zyxar/socketio/engine
+vgo get -v github.com/Mindgamesnl/socketio/engine
 ```
 
 ## Example
@@ -23,7 +23,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/zyxar/socketio/engine"
+	"github.com/Mindgamesnl/socketio/engine"
 )
 
 func main() {
