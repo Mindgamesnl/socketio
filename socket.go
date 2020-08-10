@@ -27,12 +27,17 @@ type Socket interface {
 	GetHeader(key string) string
 	SetHeader(key, value string)
 	Sid() string
+	HasBeenClosed() bool
 	io.Closer
 }
 
 type nspSock struct {
 	*socket
 	name string
+}
+
+func (n *nspSock) HasBeenClosed() bool {
+	return n.ß.HasBeenClosed()
 }
 
 // Namespace implements Socket.Namespace
@@ -59,6 +64,10 @@ type socket struct {
 	decoder Decoder
 	acks    map[string]*ackHandle
 	mutex   sync.RWMutex
+}
+
+func (s *socket) HasBeenClosed() bool {
+	return s.ß.HasBeenClosed()
 }
 
 func (s *socket) GetQuery() url.Values {

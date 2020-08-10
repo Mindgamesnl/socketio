@@ -132,6 +132,7 @@ func (s *Server) process(sock *socket, p *Packet) {
 	case PacketTypeDisconnect:
 		sock.detachnsp(p.Namespace)
 		if nsp.onDisconnect != nil {
+			sock.ß.SetHasBeenClosed(true)
 			nsp.onDisconnect(&nspSock{socket: sock, name: p.Namespace})
 		}
 	case PacketTypeEvent, PacketTypeBinaryEvent:

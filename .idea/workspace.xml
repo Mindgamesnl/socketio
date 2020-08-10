@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e34961a-9392-4d50-8463-d29e93c13fa5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/socket.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/socket.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/socket.go" beforeDir="false" afterPath="$PROJECT_DIR$/socket.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +46,22 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="640" y="365" key="#Go_Modules/0.0.1680.1050@0.0.1680.1050" timestamp="1596717164602" />
-    <state x="541" y="280" width="598" height="490" key="find.popup" timestamp="1596719712060">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1597094102166">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1597094102166" />
+    <state x="464" y="240" width="568" height="490" key="find.popup" timestamp="1597094069294">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="464" y="240" width="568" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1597094069294" />
+    <state x="541" y="280" width="598" height="490" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1596720289744" />
+    <state x="683" y="306" key="refactoring.ChangeSignatureDialog" timestamp="1596720188160">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="541" y="280" width="598" height="490" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1596719712060" />
+    <state x="683" y="306" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1596720188160" />
+    <state x="385" y="196" key="search.everywhere.popup" timestamp="1597088235141">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1597088235141" />
   </component>
 </project>

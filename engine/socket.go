@@ -16,6 +16,7 @@ type Socket struct {
 	writeTimeout  time.Duration
 	transportName string
 	id            string
+	hasBeenClosed bool
 	barrier       Barrier
 	emitter       *emitter
 	once          sync.Once
@@ -29,6 +30,7 @@ func newSocket(conn Conn, readTimeout, writeTimeout time.Duration, id string, qu
 		readTimeout:  readTimeout,
 		writeTimeout: writeTimeout,
 		id:           id,
+		hasBeenClosed: false,
 		barrier:      newLockBarrier()}
 	so.emitter = newEmitter(so, 8)
 	return so
@@ -49,6 +51,7 @@ func (s *Socket) Read() (p *Packet, err error) {
 // Close closes underlying connection and background emitter
 func (s *Socket) Close() (err error) {
 	s.once.Do(func() {
+		s.hasBeenClosed = true
 		s.emitter.close()
 		err = s.Conn.Close()
 	})
@@ -104,6 +107,16 @@ func (s *Socket) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Sid returns socket session id, assigned by server.
 func (s *Socket) Sid() string {
 	return s.id
+}
+
+// Wether it has been closed
+func (s *Socket) HasBeenClosed() bool {
+	return s.hasBeenClosed
+}
+
+// Wether it has been closed
+func (s *Socket) SetHasBeenClosed(state bool) {
+	s.hasBeenClosed = state
 }
 
 // GetHeader returns the value in http header from client request specified by `key`

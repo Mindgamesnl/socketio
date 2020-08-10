@@ -1,7 +1,6 @@
 package engine
 
 import (
-	"log"
 	"net/http"
 	"sync"
 	"time"
@@ -67,12 +66,13 @@ func NewServer(interval, timeout time.Duration, onOpen func(*Socket), oc ...Orig
 								ß.barrier.Wait()
 								continue
 							}
-							log.Println("handle:", err.Error())
-							s.fire(ß, EventClose, MessageTypeString, nil)
+							s.fire(ß, EventClose, MessageTypeString, []byte(err.Error()))
+							s.fire(ß, EventError, MessageTypeString, []byte(err.Error()))
 							return
 						}
 						if err = s.handle(ß, p); err != nil {
-							log.Println("handle:", err.Error())
+							s.fire(ß, EventClose, MessageTypeString, []byte(err.Error()))
+							s.fire(ß, EventError, MessageTypeString, []byte(err.Error()))
 						}
 					}
 				}()
