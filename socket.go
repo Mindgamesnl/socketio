@@ -197,7 +197,7 @@ func (s *socket) yield() *Packet {
 
 func (s *socket) Sid() string { return s.ß.Sid() }
 func (s *socket) Close() (err error) {
-	s.emitPacket(&Packet{
+	_ = s.emitPacket(&Packet{
 		Type:      PacketTypeDisconnect,
 		Namespace: "/",
 	})
