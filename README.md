@@ -2,16 +2,18 @@
 
 [socket.io](https://socket.io/)/[engine.io](https://github.com/socketio/engine.io) implementation in Go
 
-[![GoDoc](https://godoc.org/github.com/zyxar/socketio?status.svg)](https://godoc.org/github.com/zyxar/socketio)
-[![Go Report Card](https://goreportcard.com/badge/github.com/zyxar/socketio)](https://goreportcard.com/report/github.com/zyxar/socketio)
-[![license](https://img.shields.io/badge/license-New%20BSD-ff69b4.svg)](https://github.com/zyxar/socketio/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/zyxar/socketio.svg?branch=master)](https://travis-ci.org/zyxar/socketio)
-
+# Fork
+Maintained fork of https://github.com/zyxar/socketio with bug fixes.
+Changes compared to the original:
+ - Fixed client error handling
+ - Fixed client disconnect event
+ - Fixed client disconnect trigger (auto reconnect loop now doesn't get stuck)
+ - Minor improvements
 
 ## Install
 
 ```shell
-go get -v -u github.com/zyxar/socketio
+go get -v -u github.com/Mindgamesnl/socketio
 ```
 
 ## Features
