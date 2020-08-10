@@ -195,8 +195,14 @@ func (s *socket) yield() *Packet {
 	}
 }
 
-func (s *socket) Sid() string                 { return s.ß.Sid() }
-func (s *socket) Close() (err error)          { return s.ß.Close() }
+func (s *socket) Sid() string { return s.ß.Sid() }
+func (s *socket) Close() (err error) {
+	s.emitPacket(&Packet{
+		Type:      PacketTypeDisconnect,
+		Namespace: "/",
+	})
+	return s.ß.Close()
+}
 func (s *socket) LocalAddr() net.Addr         { return s.ß.LocalAddr() }
 func (s *socket) RemoteAddr() net.Addr        { return s.ß.RemoteAddr() }
 func (s *socket) GetHeader(key string) string { return s.ß.GetHeader(key) }
