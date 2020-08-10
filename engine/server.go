@@ -126,8 +126,14 @@ func (s *Server) getTransport(name string) Transport {
 // ServeHTTP impements http.Handler interface
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
+
+	if query.Get(queryEIO) == "" {
+		http.Redirect(w, r, "https://github.com/Mindgamesnl/socketio", 302)
+		return
+	}
+
 	if query.Get(queryEIO) != Version {
-		http.Error(w, "protocol version incompatible", http.StatusBadRequest)
+		http.Error(w, "protocol version incompatible (unknown or invalid EIO query)", http.StatusBadRequest)
 		return
 	}
 
