@@ -1,6 +1,8 @@
 package socketio
 
 import (
+	cmap "github.com/orcaman/concurrent-map"
+	"github.com/sirupsen/logrus"
 	"net/http"
 	"sync"
 	"time"
@@ -15,6 +17,7 @@ type Server struct {
 	sockLock sync.RWMutex
 	onError  func(err error)
 	nsps     map[string]*namespace
+	rooms    map[string]map[string]*socket
 }
 
 // NewServer creates a socket.io server instance upon underlying engine.io transport
@@ -22,6 +25,7 @@ func NewServer(interval, timeout time.Duration, parser Parser, oc ...engine.Orig
 	e, err := engine.NewServer(interval, timeout, func(ß *engine.Socket) {
 		socket := newSocket(ß, parser)
 		socket.attachnsp("/")
+		socket.server = server
 		nsp := server.creatensp("/")
 		if err := socket.emitPacket(&Packet{
 			Type:      PacketTypeConnect,
@@ -41,7 +45,7 @@ func NewServer(interval, timeout time.Duration, parser Parser, oc ...engine.Orig
 	if err != nil {
 		return
 	}
-	server = &Server{engine: e, sockets: make(map[*engine.Socket]*socket), nsps: make(map[string]*namespace)}
+	server = &Server{engine: e, sockets: make(map[*engine.Socket]*socket), nsps: make(map[string]*namespace), rooms: cmap.New()}
 
 	e.On(engine.EventMessage, engine.Callback(func(ß *engine.Socket, msgType engine.MessageType, data []byte) {
 		server.sockLock.RLock()
@@ -108,6 +112,7 @@ func (s *Server) OnError(fn func(err error)) { s.onError = fn }
 
 // process is the Packet process handle on server side
 func (s *Server) process(sock *socket, p *Packet) {
+	sock.namespace = p.Namespace
 	nsp, ok := s.getnsp(p.Namespace)
 	if !ok {
 		if p.Type > PacketTypeDisconnect {
@@ -186,6 +191,22 @@ func (s *Server) process(sock *socket, p *Packet) {
 	default:
 		if nsp.onError != nil {
 			nsp.onError(&nspSock{socket: sock, name: p.Namespace}, ErrUnknownPacket)
+		}
+	}
+}
+
+func (s *Server) BroadcastToRoom(room string, event string, args ...interface{}) {
+	for sid, so := range s.rooms[room] {
+		if sid == "" || so == nil {
+			continue
+		}
+
+		if err := so.Emit(event, args...); err != nil {
+			logrus.Error("[BroadcastToRoom] sid="+sid+", ", err, " ,args=", args)
+			if err == ErrorNamespaceUnavaialble {
+				so.LeaveAll()
+				so.Close()
+			}
 		}
 	}
 }
