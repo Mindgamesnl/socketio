@@ -9,8 +9,7 @@ Changes compared to the original:
  - Fixed client disconnect event
  - Fixed client disconnect trigger (auto reconnect loop now doesn't get stuck)
  - Minor improvements
- - Merged 
- implementation
+ - Merged room implementation
 
 ## Install
 
