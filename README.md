@@ -9,6 +9,7 @@ Changes compared to the original:
  - Fixed client disconnect event
  - Fixed client disconnect trigger (auto reconnect loop now doesn't get stuck)
  - Minor improvements
+ - Merged room implementation
 
 ## Install
 
@@ -18,7 +19,7 @@ go get -v -u github.com/Mindgamesnl/socketio
 
 ## Features
 
-- compatible with official nodejs implementation (w/o room);
+- compatible with official nodejs implementation;
 - `socket.io` server;
 - `socket.io` client (`websocket` only);
 - `engine.io` server;
