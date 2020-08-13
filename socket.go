@@ -169,14 +169,14 @@ func (s *socket) fireAck(nsp string, id uint64, data []byte, buffer [][]byte, au
 
 // Emit implements Socket.Emit
 func (s *socket) Emit(event string, args ...interface{}) (err error) {
-	return s.emit(s.namespace, event, args...)
+	return s.emit("/", event, args...)
 }
 
 // EmitError implements Socket.EmitError
 func (s *socket) EmitError(arg interface{}) (err error) { return s.emitError("/", arg) }
 
 // Namespace implements Socket.Namespace
-func (s *socket) Namespace() string { return s.namespace }
+func (*socket) Namespace() string { return "/" }
 
 func (s *socket) emit(nsp string, event string, args ...interface{}) (err error) {
 	s.mutex.RLock()
