@@ -10,6 +10,7 @@ Changes compared to the original:
  - Fixed client disconnect trigger (auto reconnect loop now doesn't get stuck)
  - Minor improvements
  - Merged room implementation
+ - Added support for multiple handlers per event
 
 ## Install
 
@@ -229,36 +230,45 @@ An `Event` or `Ack` Packet with any data satisfying `socketio.Binary` interface 
 `socketio.MsgpackParser`, compatible with [socket.io-msgpack-parser](https://github.com/darrachequesne/socket.io-msgpack-parser), is an alternative custom parser.
 
 
-## nginx as Reverse Proxy (or TLS Terminator)
+## TLS Terminator example using `golang.org/x/crypto/acme/autocert`
 
-```
-upstream socketio {
-    ip_hash;
-    server localhost:8080;
+```go
+type WrappedServer struct {
+	OriginalHandler http.Handler
 }
 
-server {
-
-    # ...
-
-    location /socket.io/ {
-        if ($request_method = OPTIONS) {
-                add_header Content-Length 0;
-                add_header Content-Type text/plain;
-                add_header Access-Control-Allow-Origin "$http_origin" always;
-                add_header Access-Control-Allow-Credentials 'true' always;
-                add_header Access-Control-Allow-Methods "POST,GET,OPTIONS";
-                add_header Access-Control-Allow-Headers "content-type";
-                return 204;
-        }
-        proxy_pass http://socketio;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-        add_header Access-Control-Allow-Origin "$http_origin" always;
-        add_header Access-Control-Allow-Credentials 'true' always;
-    }
+func (wrapper WrappedServer) ServeHTTP(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Access-Control-Allow-Origin", "*")
+	res.Header().Set("Access-Control-Allow-Methods", "GET, HEAD, POST, OPTIONS")
+	res.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	wrapper.OriginalHandler.ServeHTTP(res, req)
 }
 
+func StartSocketServer() {
+	server, _ := socketio.NewServer(time.Second*25, time.Second*5, socketio.DefaultParser)
+
+	logrus.Info("Setting up certbot for " + cloudflare.Server.CompleteHotName)
+	certManager := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist("socket.example.com"), // your domain
+		Cache:      autocert.DirCache("certs"),                   // cache folder
+		Email:      "example@example.com",                        // owner email
+	}
+
+	actualServer := &http.Server{
+		Addr: ":https",
+		TLSConfig: &tls.Config{
+			GetCertificate: certManager.GetCertificate,
+			ServerName:     cloudflare.Server.CompleteHotName,
+		},
+	}
+
+	wrapper := WrappedServer{
+		OriginalHandler: server,
+	}
+	actualServer.Handler = wrapper
+	
+	go http.ListenAndServe(":http", certManager.HTTPHandler(nil))
+	log.Fatal(actualServer.ListenAndServeTLS("", ""))
+}
 ```
