@@ -37,19 +37,26 @@ func (h Callback) Call(so *Socket, typ MessageType, data []byte) {
 }
 
 type eventHandlers struct {
-	handlers map[event]Callable
+	handlers map[event][]Callable
 	sync.RWMutex
 }
 
 func newEventHandlers() *eventHandlers {
 	return &eventHandlers{
-		handlers: make(map[event]Callable),
+		handlers: make(map[event][]Callable),
 	}
 }
 
 func (e *eventHandlers) On(event event, callable Callable) {
 	e.Lock()
-	e.handlers[event] = callable
+
+	// create if it doesn't exist
+	_, found := e.handlers[event]
+	if !found {
+		e.handlers[event] = []Callable{}
+	}
+
+	e.handlers[event] = append(e.handlers[event], callable)
 	e.Unlock()
 }
 
@@ -58,6 +65,8 @@ func (e *eventHandlers) fire(so *Socket, event event, typ MessageType, data []by
 	callable, ok := e.handlers[event]
 	e.RUnlock()
 	if ok {
-		callable.Call(so, typ, data)
+		for i := range callable {
+			callable[i].Call(so, typ, data)
+		}
 	}
 }
