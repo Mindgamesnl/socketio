@@ -11,6 +11,7 @@ Changes compared to the original:
  - Minor improvements
  - Merged room implementation
  - Added support for multiple handlers per event
+ - TLS support
 
 ## Install
 
