@@ -7,7 +7,7 @@ import (
 )
 
 type namespace struct {
-	callbacks    map[string]*callback
+	callbacks    map[string][]*callback
 	onConnect    func(so Socket)
 	onDisconnect func(so Socket)
 	onError      func(so Socket, err ...interface{})
@@ -39,15 +39,29 @@ func (e *namespace) OnError(fn func(so Socket, err ...interface{})) Namespace {
 	return e
 }
 
-func (e *namespace) OnEvent(event string, callback interface{}) Namespace {
-	e.callbacks[event] = newCallback(callback)
+func (e *namespace) OnEvent(event string, callbackFromInter interface{}) Namespace {
+	_, found := e.callbacks[event]
+	if !found {
+		e.callbacks[event] = []*callback{}
+	}
+	e.callbacks[event] = append(e.callbacks[event], newCallback(callbackFromInter))
 	return e
 }
 
 func (e *namespace) fireEvent(so Socket, event string, args []byte, buffer [][]byte, au ArgsUnmarshaler) ([]reflect.Value, error) {
 	fn, ok := e.callbacks[event]
 	if ok {
-		return fn.Call(so, au, args, buffer)
+		values := []reflect.Value{}
+		for i := range fn {
+			r, error := fn[i].Call(so, au, args, buffer)
+			if error != nil {
+				return nil, error
+			}
+			for i2 := range r {
+				values = append(values, r[i2])
+			}
+		}
+		return values, nil
 	}
 	return nil, nil
 }
