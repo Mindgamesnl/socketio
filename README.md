@@ -247,8 +247,7 @@ func (wrapper WrappedServer) ServeHTTP(res http.ResponseWriter, req *http.Reques
 
 func StartSocketServer() {
 	server, _ := socketio.NewServer(time.Second*25, time.Second*5, socketio.DefaultParser)
-
-	logrus.Info("Setting up certbot for " + cloudflare.Server.CompleteHotName)
+	
 	certManager := autocert.Manager{
 		Prompt:     autocert.AcceptTOS,
 		HostPolicy: autocert.HostWhitelist("socket.example.com"), // your domain
@@ -260,7 +259,7 @@ func StartSocketServer() {
 		Addr: ":https",
 		TLSConfig: &tls.Config{
 			GetCertificate: certManager.GetCertificate,
-			ServerName:     cloudflare.Server.CompleteHotName,
+			ServerName:     "socket.example.com",
 		},
 	}
 
