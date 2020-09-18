@@ -92,7 +92,7 @@ func (s *Server) Namespace(nsp string) Namespace { return s.creatensp(nsp) }
 func (s *Server) creatensp(nsp string) *namespace {
 	n, ok := s.nsps[nsp]
 	if !ok {
-		n = &namespace{callbacks: make(map[string]*callback)}
+		n = &namespace{callbacks: make(map[string][]*callback)}
 		s.nsps[nsp] = n
 	}
 	return n

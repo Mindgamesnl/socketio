@@ -78,7 +78,7 @@ func (c *Client) Namespace(nsp string) Namespace { return c.creatensp(nsp) }
 func (c *Client) creatensp(nsp string) *namespace {
 	n, ok := c.nsps[nsp]
 	if !ok {
-		n = &namespace{callbacks: make(map[string]*callback)}
+		n = &namespace{callbacks: make(map[string][]*callback)}
 		c.nsps[nsp] = n
 	}
 	return n
