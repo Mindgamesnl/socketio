@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6e34961a-9392-4d50-8463-d29e93c13fa5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/socketio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/socketio.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.14.3/libexec" />
   <component name="Git.Settings">
@@ -26,14 +37,45 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="go" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="RunManager" selected="Shell Script.check_domains.sh">
+    <configuration name="check_for_domains_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="socketio" />
+      <working_directory value="$PROJECT_DIR$/../OpenAudioMc-GoRelay" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="github.com/Mindgamesnl/socketio" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../OpenAudioMc-GoRelay/check_for_domains_test.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="check_domains.sh" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/../OpenAudioMc-GoRelay/check_domains.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/../OpenAudioMc-GoRelay" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.check_domains.sh" />
+        <item itemvalue="Go Test.check_for_domains_test.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -43,24 +85,53 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="640" y="365" key="#Go_Modules/0.0.1680.1050@0.0.1680.1050" timestamp="1596717164602" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600546315028">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600546315028" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600546315027">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600546315027" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600546315027">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600546315027" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600546315028">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600546315028" />
+    <state x="308" y="193" key="IDE.errors.dialog" timestamp="1601630650664">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="308" y="193" key="IDE.errors.dialog/0.0.1440.900@0.0.1440.900" timestamp="1601630650664" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1601629910502">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1601629910502" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1597094102166">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1597094102166" />
-    <state x="464" y="240" width="570" height="490" key="find.popup" timestamp="1597215452486">
+    <state x="464" y="240" width="589" height="490" key="find.popup" timestamp="1601741222671">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="464" y="240" width="568" height="490" key="find.popup/0.0.1440.900/0.-1206.1920.1200/-1080.-1144.1080.1920@0.0.1440.900" timestamp="1597127997891" />
-    <state x="464" y="240" width="570" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1597215452486" />
+    <state x="464" y="240" width="589" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1601741222671" />
     <state x="541" y="280" width="598" height="490" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1596720289744" />
+    <state x="476" y="331" width="626" height="454" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1601629908378">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="476" y="331" width="626" height="454" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1440.900@0.0.1440.900" timestamp="1601629908378" />
     <state x="683" y="306" key="refactoring.ChangeSignatureDialog" timestamp="1596720188160">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="683" y="306" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1596720188160" />
-    <state x="513" y="-945" width="894" height="902" key="search.everywhere.popup" timestamp="1597225860253">
-      <screen x="0" y="-1206" width="1920" height="1200" />
+    <state x="385" y="196" width="672" height="676" key="search.everywhere.popup" timestamp="1601741099834">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="513" y="-945" width="894" height="902" key="search.everywhere.popup/0.0.1440.900/0.-1206.1920.1200/-1080.-1144.1080.1920@0.-1206.1920.1200" timestamp="1597225860253" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1597099284059" />
+    <state x="385" y="196" width="672" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1601741099834" />
+    <state x="385" y="198" width="670" height="604" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1600688925413" />
   </component>
 </project>
